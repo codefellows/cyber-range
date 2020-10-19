@@ -12,6 +12,7 @@ Problem to solve: User will need to be able to choose which hacker challenge the
 User Stories:
 
 1.	As a user I will be able to navigate to 1 of 3 hacker challenges.
+a. F1 - button– event listener - xs
 
 ### Windows Login:
 
