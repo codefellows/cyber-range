@@ -1,28 +1,40 @@
 'use strict';
-// listen for submit button on login screen
+
+var thisIsNotNotThePassword = '123456';
+
 document.getElementById('submitButton').addEventListener('submit', handleSubmit);
-
-function handleSubmit(event) {
-
-  //don't forget what was entered
-  event.preventDefault();
-
-  var thisIsNotNotThePassword = '123456';
-  var selectSubmit = event.target.passwordGuess.value;
+// listen for submit button on login screen
+console.log('123456');
+function generateIncorrectAttempt() {
+  var incorrectText = document.createElement('p');
+  var passwordBox = document.getElementById('passwordTextBox');
+  while (passwordBox.firstChild) {
+    passwordBox.removeChild(passwordBox.firstChild);
+   }
+  incorrectText.textContent = 'Incorrect';
+  passwordBox.appendChild(incorrectText);
   
-  function generateIncorrectAttempt() {
-    var incorrectText = document.createElement('p');
-    incorrectText.textContent = 'Incorrect';
-    document.getElementById('passwordTextBox').appendChild(incorrectText);
-
-    if (selectSubmit === thisIsNotNotThePassword) {
-      location.href = 'windows-login-desktop.html';
-    }
-    else {
-      generateIncorrectAttempt();
-    }
+}
+console.log(generateIncorrectAttempt());
+function handleSubmit(event) {
+  event.preventDefault();
+  var selectSubmit = event.target.passwordGuess.value;
+  console.log(event.target);
+  if (selectSubmit === thisIsNotNotThePassword) {
+    location.href = 'windows-login-desktop.html';
+  } else {
+    generateIncorrectAttempt();
   }
 }
+
+
+  //don't forget what was entered
+  
+  
+  
+
+    
+
 
 
 
