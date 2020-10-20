@@ -10,24 +10,28 @@
     <header>
     </header>
     <main>
+        <img id="imageOne" src="img/stick-man.png" alt="imageOne"/>
         <div id="loginBox">
-            <h3> Remote Desktop Connection</h3>
-            <img src="" />
-            <h2>Remote Desktop</h2>
-            <h1>Connection</h1>
-            <hr>
+            <!-- <h3> Remote Desktop Connection</h3> -- >
+            <!-- <h2>Remote Desktop</h2> -->
+            <!-- <h1>Connection</h1> -->
+            <!-- <hr> -->
             <form id="submitButton">
                 <fieldset>
-                    <label>Computer
+                    <label>
                         <select id="computerOptions">
                             <option value="thisComputer">My Computer</option>
                     </label>
-                    <p>Username: Administrator</p>
-                    <label>Password
+                    <br>
+                    <!-- <p>Username: Administrator</p> -->
+                    <label>
+                        <input id="username" name="userName" type="textbox" placeholder="User Name"/>
+                    </label>
+                    <label id="passwordBox">
                         <input name="passwordGuess" type="password" placeholder="password" />
                         <p id="passwordTextBox"></p>
                     </label>
-                    <input type="submit"></input>
+                    <input id="submit" type="submit"></input>
                 </fieldset>
             </form>
         </div>
