@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Login to Windows</title>
-    <link href="css/windows-login.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-    <header>
-    </header>
-    <main>
-        <div id="loginBox">
-            <h3> Remote Desktop Connection</h3>
-            <img src="" />
-            <h2>Remote Desktop</h2>
-            <h1>Connection</h1>
-            <hr>
-            <form id="submitButton">
-                <fieldset>
-                    <label>Computer
-                        <select id="computerOptions">
-                            <option value="thisComputer">My Computer</option>
-                    </label>
-                    <p>Username: Administrator</p>
-                    <label>Password
-                        <input name="passwordGuess" type="password" placeholder="password" />
-                        <p id="passwordTextBox"></p>
-                    </label>
-                    <input type="submit"></input>
-                </fieldset>
-            </form>
-        </div>
-    </main>
-    <footer></footer>
-    <script src="js/windows.js" type="text/javascript"></script>
-</body>
-
+    <head>
+        <title>Login to Windows</title>
+        <link href="css/windows-login.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            <div id="loginBox">
+                <h3> Remote Desktop Connection</h3>
+                <img src=""/>
+                <h2>Remote Desktop</h2>
+                <h1>Connection</h1>
+                <hr>
+                <label>Computer
+                    <select id="computerOptions">
+                    <option value = "thisComputer">My Computer</option>
+                </label>
+                <p>Username: Administrator</p>
+                <label>Password
+                    <input id="passwordTextBox" name="passwordGuess" type="password" placeholder="password"/>
+                </label>
+                <input id="submitButton" type="submit"></input>
+            </div>
+        </main>
+        <footer></footer>
+        <script src="js/windows.js" type="text/javascript"></script>
+    </body>
 </html>
