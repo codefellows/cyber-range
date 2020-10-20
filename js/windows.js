@@ -2,6 +2,10 @@
 
 var thisIsNotNotThePassword = '123456';
 
+// var userTest = prompt('Enter user name: ');
+
+// window.location.hash = `uid=${userTest}`;
+
 //don't forget what was entered
 function generateIncorrectAttempt() {
   var incorrectText = document.createElement('p');
@@ -16,9 +20,11 @@ function generateIncorrectAttempt() {
 
 function handleSubmit(event) {
   event.preventDefault();
-  var selectSubmit = event.target.passwordGuess.value;
+  var userSubmit = event.target.userName.value;
+  window.location.hash = `uid=${userSubmit}`;
+  var passwordSubmit = event.target.passwordGuess.value;
   // compare input with what the password is
-  if (selectSubmit === thisIsNotNotThePassword) {
+  if (passwordSubmit === thisIsNotNotThePassword) {
     location.href = 'windows-login-desktop.html';
   } else {
     // else statement to turn input red if password does not match
