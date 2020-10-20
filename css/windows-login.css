@@ -1,15 +1,26 @@
 body{
-    background-image: radial-gradient(rgb(169, 220, 250), rgb(123, 157, 250), rgb(30, 30, 241));
+    background-color: #006da8;
     height: 600px;
+}
+#imageOne{
+    width: 200px;
+    border-radius: 100px;
+    border: black 2px solid;
+    position: relative;
+    left: 42%;
+    top: 60px;
+    background-color: lightgrey;
 }
 #loginBox{
     width: 400px;
-    border: 1px black solid;
-    background-color: lightgray;
+    /* border: 1px black solid; */
+    /* background-color: lightgray; */
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 200px;
+    margin-top: 100px;
+    color: white;
+    border: #006da8;
 }
 h3{
     padding-left: 5px;
@@ -21,4 +32,74 @@ h2{
     padding-left: 5px;
     position: relative;
     bottom: 60px;
+}
+h1{
+    position: relative;
+    bottom: 80px;
+}
+#computerOptions{
+    position: relative;
+    left: 35%;
+}
+
+#passwordBox{
+    position: relative;
+    top: 25px;
+    left: 28%;
+}
+
+#submit{
+    position: relative;
+    top: 10px;
+    left: 40%;
+}
+#username{
+    position: relative;
+    top: 22px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+fieldset{
+
+    border: #006da8 2px solid;
+}
+
+#recycle{
+    width: 80px;
+}
+#notepad{
+    width: 80px;
+}
+#file{
+    width: 80px;
+}
+#edge{
+    width: 80px;
+}
+#body2{
+    margin: 30px;
+    background-color: #14aafa;
+}
+.icon{
+    margin-bottom: 15px;
+}
+#headerAboutUs{
+    font-size: 25px;
+    font-family: 'Lucida Sans';
+    text-align: center;
+}
+.main2{
+    margin-top: 100px;
+}
+.h2page2{
+    font-weight: normal;
+    text-align: center;
+}
+
+.aboutPerson{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
 }
