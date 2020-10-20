@@ -1,0 +1,73 @@
+
+
+body { 
+    
+    /* border: 2px solid black; */
+    width: 905px;
+    margin: auto;
+    padding-top: 30px;
+    /* background: rgb(2,0,36); */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(42,42,201,1) 0%, rgba(17,199,236,1) 100%); 
+   
+  }
+.login {
+    font-size: 35px;
+    padding-top: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#login-box { 
+    position: relative;
+    left: 300px;
+    margin-top: 10px;
+    height: 450px;
+    width: 300px;
+    /* border: 2px solid black; */
+    background-color: white;
+    border-radius: 10px;
+   
+}
+
+.username-one{
+    padding: 10px;
+    margin-top: 40px;
+    /* border-top-style: hidden; */
+   /* -webkit-text-decoration-line: underline; 
+   text-decoration-line: underline;  */
+}
+
+.password-one{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.button{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 40px;
+    width: 200px;
+    padding: 7px;
+    color: white;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(42,42,201,1) 0%, rgba(17,199,236,1) 100%);
+    /* background: rgb(2,0,36); */ 
+
+
+}
+#forgot-password{
+    margin-top: 20px;
+    text-align: center;
+    text-decoration-color: black;
+}
+
+#link{
+    color: black;
+}
+
+.footer{
+    padding-top: 40px;
+    text-align: center;
+}
