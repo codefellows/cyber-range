@@ -96,7 +96,9 @@ var Base64 = {
   _utf8_decode: function (utftext) {
     var string = "";
     var i = 0;
-    var c = c1 = c2 = 0;
+    var c = 0;
+    var c2 = 0;
+    var c3 = 0;
     while (i < utftext.length) {
       c = utftext.charCodeAt(i);
       if (c < 128) {
@@ -119,6 +121,41 @@ var Base64 = {
   }
 };
 
-var x = prompt('enter text: ');
-Base64.encode(x);
-alert(x);
+// var x = prompt('enter text: ');
+// Base64.encode(x);
+// alert(x);
+
+// console.log(Base64);
+
+// var y = Base64.encode('anmsdjinami21312312');
+
+// console.log('test encode 1: ' + y);
+
+// var a = Base64.encode('itrokmg weiuj893j');
+
+// console.log('test encode 2: ' + a);
+
+// var x = Base64.decode('YW5tc2RqaW5hbWkyMTMxMjMxMg==');
+
+// console.log('test decode 0: ' + x);
+
+// var z = Base64.decode(y);
+
+// console.log('test decode: ' + z);
+
+
+// var testInput = 'jrikiosmdf389ujr34imf';
+// var testInput = prompt('enter testInput: ');
+// console.log('testInput: ' + testInput);
+
+// var testEncode = Base64.encode(testInput);
+// console.log('testEncode: ' + testEncode);
+
+// var testDecode = Base64.decode(testEncode);
+// console.log('testDecode: ' + testDecode);
+
+var testInput = prompt('enter testInput: ');
+console.log('plain testInput: ' + testInput);
+
+testInput = Base64.encode(testInput);
+console.log('encoded testInput: ' + testInput);
