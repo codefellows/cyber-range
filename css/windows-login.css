@@ -56,16 +56,26 @@ h1{
     left: 28%;
 }
 
-#submit{
+#submitButton{
     position: relative;
     top: 10px;
     left: 40%;
+    margin-top: 10px;
 }
-#username{
+#userNameInput{
     position: relative;
     top: 22px;
     margin-right: auto;
     margin-left: auto;
+}
+
+#userNameData{
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1cm;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 fieldset{
