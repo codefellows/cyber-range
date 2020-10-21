@@ -156,3 +156,9 @@ var z = x.slice(y + 1);
 z = Base64.encode(z);
 
 console.log(z);
+
+var a = 'SGVsbG8='
+
+var b = Base64.decode(a);
+
+console.log(b);
