@@ -1,0 +1,75 @@
+* {
+  max-height: 2000px;
+}
+
+header {
+  height: 150px;
+  background-color: black;
+  display: flex;
+}
+
+img {
+  height: 100px;
+  margin: auto auto auto 20px;
+}
+
+h1 {
+  color: white;
+  text-align: right;
+  font-size: 2cm;
+  font-family: 'Varela Round', sans-serif;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+}
+
+main {
+  background-color: gray;
+  padding-bottom: 200px;
+}
+
+#break {
+  height: 100px;
+  background-color: red;
+  display: flex;
+  text-align: center;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: .5cm;
+  font-family: 'Varela Round', sans-serif;
+}
+
+section {
+  margin-top: 100px;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px;
+  height: 100px;
+  width: 200px;
+  word-wrap: break-word;
+}
+
+button:hover {
+  background-color: red;
+}
+
+p {
+  font-family: 'Varela Round', sans-serif;
+}
+
+footer {
+  height: 100px;
+  background-color: slateblue;
+  position: relative;
+  bottom: 100%;
+
+}
