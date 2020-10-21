@@ -1,23 +1,24 @@
 'use strict';
 
-var thisIsNotNotThePassword = '123456';
+var uuidParam = 'uuid=';
+var uuidParamBreak = '|';
 var loginAttempts = 0;
 var attemptLimit = 5;
+var thisIsNotNotThePassword;
+var badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
+  '12345', '123123', '111111', '1234', '1234567890',
+  '1234567', 'abc123', '1q2w3e4r5t', 'q1w2e3r4t5y6', 'iloveyou',
+  '123', '000000', '123321', '1q2w3e4r', 'qwertyuiop'];
 
-//don't forget what was entered
-// function generateIncorrectAttempt() {
-//   var incorrectText = document.createElement('p');
-//   var passwordBox = document.getElementById('passwordTextBox');
-
-//   if (passwordBox.firstChild) {
-//     passwordBox.removeChild(passwordBox.firstChild);
-//   }
-//   incorrectText.textContent = 'Incorrect';
-//   passwordBox.appendChild(incorrectText);
-// }
+function passwordRetrieval() {
+  if (localStorage.getItem('storedPassword')) {
+    var retrievedPassword = localStorage.getItem('storedPassword');
+    var parsedPassword = JSON.parse(retrievedPassword);
+    thisIsNotNotThePassword = parsedPassword;
+  }
+}
 
 function generateIncorrectAttempt() {
-  // console.log(test);
   var incorrectText = document.createElement('p');
   var passwordBox = document.getElementById('passwordTextBox');
   if (loginAttempts < attemptLimit) {
@@ -34,15 +35,11 @@ function generateIncorrectAttempt() {
     }
     incorrectText.textContent = 'Login attempt limit reached. Account locked for 1 hour.';
   }
-
 }
 
 function handleSubmit(event) {
   event.preventDefault();
   loginAttempts++;
-  var userSubmit = event.target.userName.value;
-  userSubmit = Base64.encode(userSubmit);
-  window.location.hash = `uid=${userSubmit}`;
   var passwordSubmit = event.target.passwordGuess.value;
   // compare input with what the password is
   if (passwordSubmit === thisIsNotNotThePassword) {
@@ -162,48 +159,47 @@ function urlParamInjection(event) {
   event.preventDefault();
   var uuidUserNameInput = event.target.uuidUserName.value;
   var uuidPasswordInput = event.target.uuidPassword.value;
+  if (!uuidPasswordInput) {
+    uuidPasswordInput = randomBadPassword();
+  }
+  thisIsNotNotThePassword = uuidPasswordInput;
+  if (!localStorage.getItem('storedPassword')) {
+    passwordStorage(thisIsNotNotThePassword);
+  }
   uuidUserNameInput = Base64.encode(uuidUserNameInput);
   uuidPasswordInput = Base64.encode(uuidPasswordInput);
-  window.location.hash = `uuid=${uuidUserNameInput}|${uuidPasswordInput}`;
+  window.location.hash = uuidParam + uuidUserNameInput + uuidParamBreak + uuidPasswordInput;
 }
 
-// function loginUserNameInjection() {
-//   var uuidParam = '#uuid='
-//   var urlPull = location.href;
-//   var hashIndex = urlPull.indexOf(uuidParam);
-//   var paramBreakIndex = urlPull.indexOf('|');
-//   var uidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length), paramBreakIndex);
-
-
-
-//   var decodedUserName = document.createElement('p');
-//   decodedUserName.setAttribute('id', 'userNameData');
-//   decodedUserName.textContent = Base64.decode(uidUserNameParamSlice);
-//   var loginForm = document.getElementById('loginInputAnchor');
-//   var userNameEntry = document.getElementById('userNameInput');
-//   loginForm.replaceChild(decodedUserName, loginForm.childNodes[2]);
-// }
+function randomBadPassword() {
+  var badPasswordIndex = Math.floor(Math.random() * (badPasswords.length - 1));
+  return badPasswords[badPasswordIndex];
+}
 
 function loginUserNameInjection() {
-  var uuidParam = '#uuid='
   var urlPull = location.href;
-  var hashIndex = urlPull.indexOf(uuidParam);
+  var hashIndex = urlPull.indexOf('#');
   if (hashIndex !== -1) {
-    var paramBreakIndex = urlPull.indexOf('|');
-    var uidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length), paramBreakIndex);
+    var paramBreakIndex = urlPull.indexOf(uuidParamBreak);
+    var uuidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length + 1), paramBreakIndex);
     var decodedUserName = document.createElement('p');
     decodedUserName.setAttribute('id', 'userNameData');
-    decodedUserName.textContent = Base64.decode(uidUserNameParamSlice);
+    decodedUserName.textContent = Base64.decode(uuidUserNameParamSlice);
     var loginForm = document.getElementById('loginInputAnchor');
     var userNameEntry = document.getElementById('userNameInput');
-    loginForm.replaceChild(decodedUserName, loginForm.childNodes[2]);
+    loginForm.replaceChild(decodedUserName, userNameEntry);
   }
 }
 
+function passwordStorage(password) {
+  var convertedPassword = JSON.stringify(password);
+  localStorage.setItem('storedPassword', convertedPassword);
+}
 
 // listen for submit button on login screen
 var loginSubmit = document.getElementById('userLogin').addEventListener('submit', handleSubmit);
 var urlUUIDParam = document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection)
 
 // **stretch goal** add a counter to keep track of number of tries.
+passwordRetrieval();
 loginUserNameInjection();
