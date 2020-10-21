@@ -1,11 +1,29 @@
+
+
+body{background-color: slategrey;
+margin:auto;}
+
+
+
+main{
+    background-color: blanchedalmond;
+}
 footer{
+    font-family: 'Dosis', sans-serif;;
     text-align: center;
+    color: blanchedalmond;
+    background-color: black;
+    margin: auto;
+    padding: 1%;
+    border-top: slategrey solid 15px;
 }
 .tophalfcontainer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin: 1.5%;
+    padding-top: 1.5%;
+    background-color: blanchedalmond;
     /* flex-wrap: nowrap; */
 }
 .heroimagecontainer{
@@ -16,25 +34,31 @@ footer{
     display: flex;
     justify-content: center;
     flex-direction: column; 
-    margin: auto
+    margin: auto;
+    background-color: blanchedalmond;
+    padding-left: 1%;
 }
 .productdetails{
     display: flex;    
     align-items: center;
     margin: 1.5%;
+    font-family: 'Dosis', sans-serif;
     
     
     /* flex-wrap: nowrap; */
 }
 #subheader{
 font-size: large;
+font-family: 'Days One', sans-serif;
 
 }
 .galleryimagecontainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-}
+    justify-content: space-evenly;
+    flex-shrink: 3;
+    margin: auto;
+} 
 
 li{
    display: block;
@@ -46,30 +70,59 @@ li{
 }
 
 h3{
+   
     font-size: x-large;
     margin: auto;
-    margin-bottom: 2%;
+    margin-top: .5%;
+    margin-bottom: 4%;
+    
+    font-family: 'Days One', sans-serif;
+
 
 }
 h1{
+    font-family: 'Days One', sans-serif;
     text-align: center;
-font-size: xx-large;
-background-color: black;
-color: blanchedalmond;
+    font-size: xx-large;
+    background-color: black;
+    color: blanchedalmond;
+    padding-bottom: 2%;
 
 }
 .buybutton{
-    display: flex;
-    align-items: right;
-    align-content: right;
-    justify-content: right;
     margin: 2%;
+    font-family: 'Days One', sans-serif;
 }
+
+  
+ .buybutton:hover{
+    background: slategrey;
+    border-radius: 25%; 
+    margin-right: 92%;
+    transform: scale(5.15);
+
+ } 
+
+
 h2{
     text-align: right;
     font-size: large;
     margin: auto;
-    padding-right: 1.5%;
+    padding-right: 2.5%;
+    padding-top: .5%;
     background-color: black;
     color: blanchedalmond;
+    font-family: 'Dosis', sans-serif;;
+}
+.heroimage{
+    width: 400px;
+    border-radius: 8px;
+}
+.galleryimageitem{
+    max-width:100%;
+    width: 300px;
+    height: auto;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 10px;
 }
