@@ -147,7 +147,11 @@ var x = location.href;
 
 var y = x.indexOf('#');
 
+// console.log(y);
+
 var z = x.slice(y + 1);
+
+// console.log(z);
 
 z = Base64.encode(z);
 
