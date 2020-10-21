@@ -17,7 +17,7 @@ var attemptLimit = 5;
 // }
 
 function generateIncorrectAttempt() {
-  console.log(test);
+  // console.log(test);
   var incorrectText = document.createElement('p');
   var passwordBox = document.getElementById('passwordTextBox');
   if (loginAttempts < attemptLimit) {
@@ -27,7 +27,7 @@ function generateIncorrectAttempt() {
     incorrectText.textContent = `Incorrect username or password. ${attemptLimit - loginAttempts} attempts left.`;
     passwordBox.appendChild(incorrectText);
   } else if (loginAttempts >= attemptLimit) {
-    // test.removeEventListener('submit', handleSubmit);
+    // loginSubmit.removeEventListener('submit', handleSubmit);
     // alert('Login attempt limit reached. Account locked for 1 hour.');
     if (passwordBox.firstChild) {
       passwordBox.removeChild(passwordBox.firstChild);
@@ -158,7 +158,52 @@ var Base64 = {
   }
 };
 
+function urlParamInjection(event) {
+  event.preventDefault();
+  var uuidUserNameInput = event.target.uuidUserName.value;
+  var uuidPasswordInput = event.target.uuidPassword.value;
+  uuidUserNameInput = Base64.encode(uuidUserNameInput);
+  uuidPasswordInput = Base64.encode(uuidPasswordInput);
+  window.location.hash = `uuid=${uuidUserNameInput}|${uuidPasswordInput}`;
+}
+
+// function loginUserNameInjection() {
+//   var uuidParam = '#uuid='
+//   var urlPull = location.href;
+//   var hashIndex = urlPull.indexOf(uuidParam);
+//   var paramBreakIndex = urlPull.indexOf('|');
+//   var uidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length), paramBreakIndex);
+
+
+
+//   var decodedUserName = document.createElement('p');
+//   decodedUserName.setAttribute('id', 'userNameData');
+//   decodedUserName.textContent = Base64.decode(uidUserNameParamSlice);
+//   var loginForm = document.getElementById('loginInputAnchor');
+//   var userNameEntry = document.getElementById('userNameInput');
+//   loginForm.replaceChild(decodedUserName, loginForm.childNodes[2]);
+// }
+
+function loginUserNameInjection() {
+  var uuidParam = '#uuid='
+  var urlPull = location.href;
+  var hashIndex = urlPull.indexOf(uuidParam);
+  if (hashIndex !== -1) {
+    var paramBreakIndex = urlPull.indexOf('|');
+    var uidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length), paramBreakIndex);
+    var decodedUserName = document.createElement('p');
+    decodedUserName.setAttribute('id', 'userNameData');
+    decodedUserName.textContent = Base64.decode(uidUserNameParamSlice);
+    var loginForm = document.getElementById('loginInputAnchor');
+    var userNameEntry = document.getElementById('userNameInput');
+    loginForm.replaceChild(decodedUserName, loginForm.childNodes[2]);
+  }
+}
+
+
 // listen for submit button on login screen
-var test = document.getElementById('submitButton').addEventListener('submit', handleSubmit);
+var loginSubmit = document.getElementById('userLogin').addEventListener('submit', handleSubmit);
+var urlUUIDParam = document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection)
 
 // **stretch goal** add a counter to keep track of number of tries.
+loginUserNameInjection();
