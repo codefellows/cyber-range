@@ -1,0 +1,38 @@
+body {
+  width: 905px;
+  margin: auto;
+ background-color: rgb(240, 237, 233);
+}
+header{
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  padding: 30px;
+}
+p{
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  /* padding-bottom: 70px; */
+}
+#securityquest-box{
+  position: relative;
+  left: 250px;
+  margin-bottom: 60px;
+  height: 350px;
+  width: 480px;
+  background-color: whitesmoke;
+  border: solid black;
+}
+.securityquest{
+  padding: 20px;
+}
+.answer-one{
+  margin-top: 15px;
+}
+input{
+  margin-top: 25px;
+  
+}
+footer{
+  text-align: center;
+}
