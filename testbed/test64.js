@@ -1,22 +1,5 @@
 'use strict';
 
-// // sourceType: module = 'https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.mjs';
-
-// sourceType: module;
-
-// console.log('Initializing');
-
-// // import { Base64 } from 'https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.mjs';
-
-// var pngBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
-
-
-// console.log('plain: ' + pngBase64);
-
-// Base64.atob(pngBase64);
-
-// console.log('encoded: ' + pngBase64);
-
 var Base64 = {
   // private property
   _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -154,8 +137,18 @@ var Base64 = {
 // var testDecode = Base64.decode(testEncode);
 // console.log('testDecode: ' + testDecode);
 
-var testInput = prompt('enter testInput: ');
-console.log('plain testInput: ' + testInput);
+// var testInput = prompt('enter testInput: ');
+// console.log('plain testInput: ' + testInput);
 
-testInput = Base64.encode(testInput);
-console.log('encoded testInput: ' + testInput);
+// testInput = Base64.encode(testInput);
+// console.log('encoded testInput: ' + testInput);
+
+var x = location.href;
+
+var y = x.indexOf('#');
+
+var z = x.slice(y + 1);
+
+z = Base64.encode(z);
+
+console.log(z);
