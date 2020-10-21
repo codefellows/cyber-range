@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Security Questions</title>
+  <link href="securityquestions.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>Security Questions</header>
+  <p>Please select three security questions below. These questions will help us verify your identity.</p>
+  <main>
+    <form id="securityquest-box">
+      <!-- <fieldset> -->
+      <section class="securityquest">
+        <label name="security">Security Question</label>
+        <select name="question" id="question">
+          <option value="default" selected>Please select a question:</option>
+          <option value="question-one">In what city or town were you born in?</option>
+          <option value="question-two">What is your mother's maiden name?</option>
+          <option value="question-three">What was your favorite vehicle to drive?</option>
+      </section>
+      <section class="answer-one">Answer:
+        <input type="text" id="answer" name="answer1" />
+        <!-- <label>Answer<br />
+                <input type="text" name="answer"/></label><br /> -->
+      </section>
+
+
+      </section>
+      <section class="securityquest">
+        <label name="security">Security Question</label>
+        <select name="question" id="question" placeholder="Please select a question">
+          <option value="default" selected>Please select a question:</option>
+          <option value="question-one">In what city or town were you born in?</option>
+          <option value="question-two">What is your mother's maiden name?</option>
+          <option value="question-three">What was your favorite vehicle to drive?</option>
+      </section>
+      <section>
+        <label class="answer1">
+          <input name="answer1" type="textbox" />
+        </label>
+      </section>
+      <section class="securityquest">
+        <label name="security">Security Question</label>
+        <select name="question" id="question" placeholder="Please select a question">
+          <option value="default" selected>Please select a question:</option>
+          <option value="question-one">In what city or town were you born in?</option>
+          <option value="question-two">What is your mother's maiden name?</option>
+          <option value="question-three">What was your favorite vehicle to drive?</option>
+      </section>
+      <section>
+        <label class="answer1">  
+        <input name="answer1" type="textbox" />
+        </label>
+      <!-- </fieldset> -->
+    </form>
+  </main>
+  <footer>&copy; Steve Buscemi</footer>
+</body>
+
+</html>
