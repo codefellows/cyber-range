@@ -1,5 +1,6 @@
 'use strict';
 
+// Global variables
 var correctAnswerNumber = 0;
 var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I drive for work?', 'Thank you. Proceed to password reset.'];
 var answerText = ['Brooklyn', 'Wilson', 'Ice Cream Truck'];
@@ -7,12 +8,13 @@ var securityQuestionOneElement = document.getElementById('securityquest-box').ad
 // var attemptLimit = 3;
 // var attemptsSoFar = 0;
 
+// Grabbing the id "question" and populating it with content from array
 function question(){
   var questionInput = document.getElementById('question');
   questionInput.textContent = questionText[correctAnswerNumber];
 }
-// question();
 
+// handle function that either provides a correct or incorrect response submitted by the user.
 function handleSubmit(event) {
   event.preventDefault();
   console.log(event.target);
@@ -32,7 +34,7 @@ function handleSubmit(event) {
   labelElement.removeChild(attemptResponse);
 }
 
-
+// If the input is correct, this is the function that happens
 function correctAttempt(event){
   var correctText = document.createElement('p');
   var parentElementQOne = document.getElementById('answerInput');
@@ -41,6 +43,7 @@ function correctAttempt(event){
   event.target.answer.value = null;
 }
 
+// If the input is incorrect, this is the function that runs
 function incorrectAttempt(event){
   var incorrectText = document.createElement('p');
   var parentElementQOne = document.getElementById('answerInput');
@@ -49,16 +52,10 @@ function incorrectAttempt(event){
   event.target.answer.value = null;
 }
 
-// function questionCycle(){
-//   // var i = 0;
-//   for (var i=0; i < questionText.length; i++){
-//     question();
-//   }
-//   // i++;
-// }
-
+// This calls the question function
 question();
 
+// This is what happens when all the questions have been answered correctly
 var finalSubmit = document.getElementById('passwordResetButton');
 finalSubmit.addEventListener('click', handleClick);
 function handleClick(event){
