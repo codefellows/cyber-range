@@ -12,24 +12,36 @@
 
 <body>
   <main>
+
     <form id="login-box">
-      <!-- <fieldset> -->
       <section class="login">
         <p><b>Login</p></b>
       </section>
       <section class="username-one">
         <label class="login-box">Username:
-          <input name="username-one" type="text" />
+          <input name="username-one" type="text" placeholder="Steve_Buscemi" />
 
         </label>
         <hr>
       </section>
       <section class="password-one">
         <label>Password:
-          <input name="password-one" type="text" required />
+          <input name="passwordone" type="text" required />
         </label>
         <hr>
-        <button id="celebrityLoginButton" class="button" type="submit">Login</button>
+
+        <!-- <button id="celebrityLoginButton"></button> -->
+
+        <!-- </button> class="button" type="submit">Login -->
+
+        <button id="modal-btn">LOGIN</button>
+        <div class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p>Password Incorrect</p>
+          </div>
+        </div>
+
 
       </section>
       <section id="forgot-password">
@@ -44,7 +56,7 @@
   </main>
   <footer>
     <div class="footer">
-      &copy;Steve Buscemi
+      &copy;Loogle Photos
     </div>
   </footer>
   <script src="celebritylogin-app.js" type="text/javascript"></script>
