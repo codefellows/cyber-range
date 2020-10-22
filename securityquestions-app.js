@@ -4,8 +4,8 @@ var correctAnswerNumber = 0;
 var correctAnswerOne = 'Brooklyn';
 var correctAnswerTwo = 'Wilson';
 var correctAnswerThree = 'Ice Cream Truck';
-var attemptLimit = 3;
-var attemptsSoFar = 0;
+// var attemptLimit = 3;
+// var attemptsSoFar = 0;
 
 function questionOne(){
   var securityQuestionOneElement = document.getElementById('firstAnswer');
@@ -18,6 +18,7 @@ function questionOne(){
     if (correctAnswerOne === userInputOne) {
       correctAnswerNumber++;
       correctAttempt();
+      console.log(correctAnswerNumber);
     } else {
       incorrectAttempt();
     }
@@ -54,6 +55,7 @@ function questionTwo(){
     if (correctAnswerTwo === userInputTwo) {
       correctAnswerNumber++;
       correctAttemptTwo();
+      console.log(correctAnswerNumber);
     } else {
       incorrectAttemptTwo();
     }
@@ -88,6 +90,7 @@ function questionThree(){
     if (correctAnswerThree === userInputThree) {
       correctAnswerNumber++;
       correctAttemptThree();
+      console.log(correctAnswerNumber);
     } else {
       incorrectAttemptThree();
     }
@@ -109,6 +112,22 @@ function incorrectAttemptThree(){
   incorrectText.textContent='Incorrect Guess';
   parentElementQThree.after(incorrectText);
 }
+
+console.log(correctAnswerNumber);
+
+var finalSubmit = document.getElementById('passwordResetButton');
+finalSubmit.addEventListener('click', handleClick);
+function handleClick(event){
+  event.preventDefault();
+  if (correctAnswerNumber === 3){
+    location.href = 'celebrity-hack-password-reset.html';
+    // location.href = 'celebrity-hack-sb-photos.html';
+  } else {
+    location.href = 'securityquestions.html';
+  }
+}
+
+
 // select security question answer based off quick google searches
 // x amount of tries if ita wrong
 // breaks through if its right to reset password
