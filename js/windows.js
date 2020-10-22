@@ -2,8 +2,8 @@
 
 var uuidParam = 'uuid=';
 var uuidParamBreak = '|';
-var loginAttempts = 0;
-var attemptLimit = 5;
+// var loginAttempts = 0;
+// var attemptLimit = 5;
 var thisIsNotNotThePassword;
 var badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
   '12345', '123123', '111111', '1234', '1234567890',
@@ -18,45 +18,37 @@ function passwordRetrieval() {
   }
 }
 
-function generateIncorrectAttempt() {
-  var incorrectText = document.createElement('p');
-  var passwordBox = document.getElementById('passwordTextBox');
-  if (loginAttempts < attemptLimit) {
-    if (passwordBox.firstChild) {
-      passwordBox.removeChild(passwordBox.firstChild);
-    }
-    incorrectText.textContent = `Incorrect username or password. ${attemptLimit - loginAttempts} attempts left.`;
-    passwordBox.appendChild(incorrectText);
-  } else if (loginAttempts >= attemptLimit) {
-    // loginSubmit.removeEventListener('submit', handleSubmit);
-    // alert('Login attempt limit reached. Account locked for 1 hour.');
-    if (passwordBox.firstChild) {
-      passwordBox.removeChild(passwordBox.firstChild);
-    }
-    incorrectText.textContent = 'Login attempt limit reached. Account locked for 1 hour.';
+function urlParamInjection(event) {
+  event.preventDefault();
+  var uuidUserNameInput = event.target.uuidUserName.value;
+  var uuidPasswordInput = event.target.uuidPassword.value;
+  if (!uuidPasswordInput) {
+    uuidPasswordInput = randomBadPassword();
   }
+  thisIsNotNotThePassword = uuidPasswordInput;
+  passwordStorage(thisIsNotNotThePassword);
+  uuidUserNameInput = Base64.encode(uuidUserNameInput);
+  uuidPasswordInput = Base64.encode(uuidPasswordInput);
+  window.location.hash = uuidParam + uuidUserNameInput + uuidParamBreak + uuidPasswordInput;
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  loginAttempts++;
-  var passwordSubmit = event.target.passwordGuess.value;
-  // compare input with what the password is
-  if (passwordSubmit === thisIsNotNotThePassword) {
-    location.href = 'windows-login-desktop.html';
-  } else {
-    // else statement to turn input red if password does not match
-    generateIncorrectAttempt();
-  }
+function randomBadPassword() {
+  var badPasswordIndex = Math.floor(Math.random() * (badPasswords.length - 1));
+  return badPasswords[badPasswordIndex];
+}
+
+function passwordStorage(password) {
+  var convertedPassword = JSON.stringify(password);
+  localStorage.setItem('storedPassword', convertedPassword);
 }
 
 //3rd-party bas64 transcoding script: http://www.webtoolkit.info/javascript_base64.html#.X49WDNBKhhH
 var Base64 = {
   // private property
-  _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+  _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
   // public method for encoding
   encode: function (input) {
-    var output = "";
+    var output = '';
     var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
     var i = 0;
     input = Base64._utf8_encode(input);
@@ -81,11 +73,11 @@ var Base64 = {
   },
   // public method for decoding
   decode: function (input) {
-    var output = "";
+    var output = '';
     var chr1, chr2, chr3;
     var enc1, enc2, enc3, enc4;
     var i = 0;
-    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
     while (i < input.length) {
       enc1 = this._keyStr.indexOf(input.charAt(i++));
       enc2 = this._keyStr.indexOf(input.charAt(i++));
@@ -107,8 +99,8 @@ var Base64 = {
   },
   // private method for UTF-8 encoding
   _utf8_encode: function (string) {
-    string = string.replace(/\r\n/g, "\n");
-    var utftext = "";
+    string = string.replace(/\r\n/g, '\n');
+    var utftext = '';
     for (var n = 0; n < string.length; n++) {
       var c = string.charCodeAt(n);
       if (c < 128) {
@@ -128,7 +120,7 @@ var Base64 = {
   },
   // private method for UTF-8 decoding
   _utf8_decode: function (utftext) {
-    var string = "";
+    var string = '';
     var i = 0;
     var c = 0;
     var c2 = 0;
@@ -155,25 +147,6 @@ var Base64 = {
   }
 };
 
-function urlParamInjection(event) {
-  event.preventDefault();
-  var uuidUserNameInput = event.target.uuidUserName.value;
-  var uuidPasswordInput = event.target.uuidPassword.value;
-  if (!uuidPasswordInput) {
-    uuidPasswordInput = randomBadPassword();
-  }
-  thisIsNotNotThePassword = uuidPasswordInput;
-  passwordStorage(thisIsNotNotThePassword);
-  uuidUserNameInput = Base64.encode(uuidUserNameInput);
-  uuidPasswordInput = Base64.encode(uuidPasswordInput);
-  window.location.hash = uuidParam + uuidUserNameInput + uuidParamBreak + uuidPasswordInput;
-}
-
-function randomBadPassword() {
-  var badPasswordIndex = Math.floor(Math.random() * (badPasswords.length - 1));
-  return badPasswords[badPasswordIndex];
-}
-
 function loginUserNameInjection() {
   var urlPull = location.href;
   var hashIndex = urlPull.indexOf('#');
@@ -189,20 +162,45 @@ function loginUserNameInjection() {
   }
 }
 
-function passwordStorage(password) {
-  var convertedPassword = JSON.stringify(password);
-  localStorage.setItem('storedPassword', convertedPassword);
+function handleSubmit(event) {
+  event.preventDefault();
+  // loginAttempts++;
+  var passwordSubmit = event.target.passwordGuess.value;
+  // compare input with what the password is
+  if (passwordSubmit === thisIsNotNotThePassword) {
+    location.href = 'windows-login-desktop.html';
+  } else {
+    // else statement to turn input red if password does not match
+    event.target.passwordGuess.value = null;
+  }
 }
 
-// listen for submit button on login screen
-var loginSubmit = document.getElementById('userLogin').addEventListener('submit', handleSubmit);
-var urlUUIDParam = document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection)
+// function generateIncorrectAttempt() {
+//   var incorrectText = document.createElement('p');
+//   var passwordBox = document.getElementById('passwordTextBox');
+//   if (loginAttempts < attemptLimit) {
+//     if (passwordBox.firstChild) {
+//       passwordBox.removeChild(passwordBox.firstChild);
+//     }
+//     incorrectText.textContent = `Incorrect username or password. ${attemptLimit - loginAttempts} attempts left.`;
+//     passwordBox.appendChild(incorrectText);
+//   } else if (loginAttempts >= attemptLimit) {
+//     // loginSubmit.removeEventListener('submit', handleSubmit);
+//     // alert('Login attempt limit reached. Account locked for 1 hour.');
+//     if (passwordBox.firstChild) {
+//       passwordBox.removeChild(passwordBox.firstChild);
+//     }
+//     incorrectText.textContent = 'Login attempt limit reached. Account locked for 1 hour.';
+//   }
+// }
+
+document.getElementById('userLogin').addEventListener('submit', handleSubmit);
+document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection);
+
+passwordRetrieval();
+loginUserNameInjection();
 
 document.getElementById('resetButton').onclick = function () {
   localStorage.clear('storedPassword');
   location.href = 'windows-login-loginpage.html';
 };
-
-// **stretch goal** add a counter to keep track of number of tries.
-passwordRetrieval();
-loginUserNameInjection();

@@ -1,22 +1,25 @@
 'use strict';
 
-// add to local storage
-// password to be correct 
-// button to click and link to page
-// event listener listening for submit
-
-
+function passwordVerificationError(formInput) {
+  var errorMessage = document.getElementById('passwordError');
+  errorMessage.textContent = 'Password entries do not match. Please try again.';
+  formInput.target.newPassword.value = null;
+  formInput.target.verifyPassword.value = null;
+}
 
 function handleSubmit(event) {
   event.preventDefault();
-  var newPassword = event.target.password.value;
-  //console.log(newPassword);
-  var generateStoredData = JSON.stringify(newPassword);
-  localStorage.setItem('accessData', generateStoredData);
-
-  location.href = 'celebrity-hack-sb-photos.html';
+  // new password set by user set in local storage
+  var password = event.target.newPassword.value;
+  var passwordCheck = event.target.verifyPassword.value;
+  if (password === passwordCheck) {
+    var generateStoredData = JSON.stringify(password);
+    localStorage.setItem('accessData', generateStoredData);
+    // user redirected to login page
+    location.href = 'celebritylogin-index.html';
+  } else {
+    passwordVerificationError(event);
+  }
 }
 
 document.getElementById('reset').addEventListener('submit', handleSubmit);
-var test = document.getElementById('reset');
-//console.log(test);
