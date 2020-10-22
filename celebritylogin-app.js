@@ -31,9 +31,7 @@ function handleClick(event) {
 
 }
 
-
 button.addEventListener('submit', handleClick);
-
 
 function correctPasswordEntered() {
   console.log('the correct password was entered');

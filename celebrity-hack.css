@@ -32,9 +32,7 @@ body {
 .username-one{
     padding: 10px;
     margin-top: 40px;
-    /* border-top-style: hidden; */
-   /* -webkit-text-decoration-line: underline; 
-   text-decoration-line: underline;  */
+   
 }
 
 .password-one{
@@ -43,24 +41,75 @@ body {
     border: none;
     background: transparent;
 }
-
-.button{
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.modal {
+    display: none;
+    /* position: fixed;  */
+    padding-top: 20px;
+    left: 60; 
+    top: 0;
+    width: 90px;
+    height: 40px; 
+   
+
+  }
+  .modal-content {
+    position: absolute;
+    background-color: rgb(250, 206, 189);
+    opacity: 0.9px;
+    padding: 0px; 
+    margin-left: 40px;
+    
+    /* margin: auto;  */
+    width: 200px; 
+    height: 30px;
+    padding-top: 20px; 
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    
+  }
+
+  #modal-btn{
+    background: linear-gradient(90deg, rgba(88,134,246,1) 4%, rgba(160,64,246,1) 100%);
+    border: transparent; 
+    /* justify-content: center;
+    align-items: center; */
     margin-left: 40px;
     margin-top: 40px;
     width: 200px;
-    padding: 7px;
-    color: white;
-    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(42,42,201,1) 0%, rgba(17,199,236,1) 100%); */
-    background: linear-gradient(90deg, rgba(88,134,246,1) 4%, rgba(160,64,246,1) 100%);
-    border: transparent;
-    /* background: rgb(2,0,36); */ 
+    padding: 20px;
+
+  }
+
+  .close-btn {
+    float: left;
+    padding-left: 20px;
+    padding-right: 8px;
+    padding-top: 1px;
+    color: black; 
+    font-size: 15px;  
+    font-weight: bold;
 
 
-}
+  }
+  .close-btn:hover {
+    color: purple;
+  }
+
+
+  @-webkit-keyframes animatetop {
+    from {top:-200px; opacity:0.2} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-200px; opacity:0.2}
+    to {top:0; opacity:1}
+  }
+
+  
 #forgot-password{
     margin-top: 20px;
     text-align: center;
