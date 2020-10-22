@@ -6,7 +6,7 @@ document.getElementById('buttonLeft').onclick = function () {
 };
 
 document.getElementById('buttonMid').onclick = function () {
-  location.href = 'Celebrity-Hacker/celebritylogin-index.html';
+  location.href = 'celebritylogin-index.html';
 };
 
 document.getElementById('buttonRight').onclick = function () {
