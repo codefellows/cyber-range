@@ -1,6 +1,5 @@
 'use strict';
 
-
 document.getElementById('buttonLeft').onclick = function () {
   location.href = 'windows-login-loginpage.html';
 };
