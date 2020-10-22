@@ -1,11 +1,8 @@
 body { 
     
-    /* border: 2px solid black; */
     width: 905px;
     margin: auto;
     padding-top: 30px;
-    /* background: rgb(2,0,36); */
-    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(42,42,201,1) 0%, rgba(17,199,236,1) 100%);  */
     background: linear-gradient(90deg, rgba(88,134,246,1) 4%, rgba(160,64,246,1) 100%);
    
   }

@@ -3,13 +3,6 @@ body{
   margin: auto;
   background-color: teal;
 }
-img{
-  height: 340px;
-  width: 300px;
-  padding: 10px;
-  border-radius: 20px;
-  border: 3px groove rgb(204, 204, 53);
-}
 header{
   font-family: 'Permanent Marker', cursive;
   text-align: center;
@@ -18,12 +11,51 @@ header{
   margin-bottom: 30px;
   margin-top: 20px;
 }
-.underline-bacon {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/78779/bacon.svg");
-  background-position: 0 1.06em;
-  background-size: 28px 9px;
-  opacity: .3;
+img{
+  height: 340px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 3px groove rgb(204, 204, 53);
+}
+.public-facing{
+  margin-bottom: 50px;
+}
+h2{
+  font-family: 'Permanent Marker', cursive;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: rgb(204, 204, 53);
 
+}
+.first3{
+  display: flex;
+  flex-direction: row;
+}
+.firstpic{
+  flex-direction: column;
+
+}
+.second3{
+  display:flex;
+  flex-direction: row;
+}
+.secondpic{
+  flex-direction: column;
+}
+.third3{
+  display: flex;
+  flex-direction: row;
+}
+.thirdpic{
+  flex-direction: column;
+}
+.fourth3{
+  display: flex;
+  flex-direction: row;
+}
+.fourthpic{
+  flex-direction: column;
 }
 button{
   border-color: transparent;
@@ -44,6 +76,7 @@ a:link{
 #link{
   color: black;
 }
+
 footer{
   text-align: center;
   padding: 30px;
