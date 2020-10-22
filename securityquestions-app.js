@@ -1,119 +1,63 @@
 'use strict';
 
 var correctAnswerNumber = 0;
-var correctAnswerOne = 'Brooklyn';
-var correctAnswerTwo = 'Wilson';
-var correctAnswerThree = 'Ice Cream Truck';
+var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I drive for work?', 'Thank you. Proceed to password reset.'];
+var answerText = ['Brooklyn', 'Wilson', 'Ice Cream Truck'];
+var securityQuestionOneElement = document.getElementById('securityquest-box').addEventListener('submit', handleSubmit);
 // var attemptLimit = 3;
 // var attemptsSoFar = 0;
 
-function questionOne(){
-  var securityQuestionOneElement = document.getElementById('firstAnswer');
-  securityQuestionOneElement.addEventListener('click', handleClick);
-  function handleClick(event) {
-    event.preventDefault();
-    console.log(event.target);
-    var userInputOne = document.getElementById('firstInput').value;
-    console.log(userInputOne);
-    if (correctAnswerOne === userInputOne) {
-      correctAnswerNumber++;
-      correctAttempt();
-      console.log(correctAnswerNumber);
-    } else {
-      incorrectAttempt();
-    }
-  }
+function question(){
+  var questionInput = document.getElementById('question');
+  questionInput.textContent = questionText[correctAnswerNumber];
 }
-questionOne();
+// question();
 
-function correctAttempt(){
+function handleSubmit(event) {
+  event.preventDefault();
+  console.log(event.target);
+  var userInput = event.target.answer.value;
+  if (answerText[correctAnswerNumber] === userInput) {
+    correctAnswerNumber++;
+    correctAttempt(event);
+    question();
+  } else if (correctAnswerNumber === 3){
+    finalSubmit();
+  }
+  else {
+    incorrectAttempt(event);
+  }
+  var labelElement = document.getElementById('answerResponse');
+  var attemptResponse = labelElement.lastChild;
+  labelElement.removeChild(attemptResponse);
+}
+
+
+function correctAttempt(event){
   var correctText = document.createElement('p');
-  var parentElementQOne = document.getElementById('firstInput');
+  var parentElementQOne = document.getElementById('answerInput');
   correctText.textContent ='Correct!';
   parentElementQOne.after(correctText);
-
+  event.target.answer.value = null;
 }
 
-function incorrectAttempt(){
+function incorrectAttempt(event){
   var incorrectText = document.createElement('p');
-  var parentElementQOne = document.getElementById('firstInput');
-  incorrectText.textContent='Incorrect Guess';
+  var parentElementQOne = document.getElementById('answerInput');
+  incorrectText.textContent='Incorrect. Remember answers are case sensitive';
   parentElementQOne.after(incorrectText);
+  event.target.answer.value = null;
 }
 
+// function questionCycle(){
+//   // var i = 0;
+//   for (var i=0; i < questionText.length; i++){
+//     question();
+//   }
+//   // i++;
+// }
 
-
-
-function questionTwo(){
-  var securityQuestionTwoElement = document.getElementById('secondAnswer');
-  securityQuestionTwoElement.addEventListener('click', handleClick);
-  function handleClick(event) {
-    event.preventDefault();
-    console.log(event.target);
-    var userInputTwo = document.getElementById('secondInput').value;
-    console.log(userInputTwo);
-    if (correctAnswerTwo === userInputTwo) {
-      correctAnswerNumber++;
-      correctAttemptTwo();
-      console.log(correctAnswerNumber);
-    } else {
-      incorrectAttemptTwo();
-    }
-  }
-}
-questionTwo();
-
-function correctAttemptTwo(){
-  var correctText = document.createElement('p');
-  var parentElementQTwo = document.getElementById('secondInput');
-  correctText.textContent ='Correct!';
-  parentElementQTwo.after(correctText);
-
-}
-
-function incorrectAttemptTwo(){
-  var incorrectText = document.createElement('p');
-  var parentElementQTwo = document.getElementById('secondInput');
-  incorrectText.textContent='Incorrect Guess';
-  parentElementQTwo.after(incorrectText);
-}
-
-
-function questionThree(){
-  var securityQuestionThreeElement = document.getElementById('thirdAnswer');
-  securityQuestionThreeElement.addEventListener('click', handleClick);
-  function handleClick(event) {
-    event.preventDefault();
-    console.log(event.target);
-    var userInputThree = document.getElementById('thirdInput').value;
-    console.log(userInputThree);
-    if (correctAnswerThree === userInputThree) {
-      correctAnswerNumber++;
-      correctAttemptThree();
-      console.log(correctAnswerNumber);
-    } else {
-      incorrectAttemptThree();
-    }
-  }
-}
-questionThree();
-
-function correctAttemptThree(){
-  var correctText = document.createElement('p');
-  var parentElementQThree = document.getElementById('thirdInput');
-  correctText.textContent ='Correct!';
-  parentElementQThree.after(correctText);
-
-}
-
-function incorrectAttemptThree(){
-  var incorrectText = document.createElement('p');
-  var parentElementQThree = document.getElementById('thirdInput');
-  incorrectText.textContent='Incorrect Guess';
-  parentElementQThree.after(incorrectText);
-}
-
-console.log(correctAnswerNumber);
+question();
 
 var finalSubmit = document.getElementById('passwordResetButton');
 finalSubmit.addEventListener('click', handleClick);

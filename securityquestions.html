@@ -10,26 +10,24 @@
 
 <body>
   <header>Security Questions</header>
-  <p>Please select three security questions below. These questions will help us verify your identity.</p>
   <main>
+    <h6 id="headerP">Hello Steve_Buscemi, to reset your password, please answer the questions you previously provided below:</h6>
     <form id="securityquest-box">
-      <section id="securityQuestionOne" class="securityquest">
-        <label name="security">Security Question
-          <select name="question" id="question">
-            <option value="default" selected>Please select a question:</option>
-            <option value="question-one">In what city or town were you born in?</option>
-        </label>
+      <section class="securityquest">
+        <h5 id="question"></h5>
       </section>
  
-      <section>
-        <label class="answer1">
+      <section class="answerBox">
+        <label id="answerResponse">
           <!-- <section class="answer-one">Answer: -->
-          <input id="firstInput" type="text" name="answerOne" placeholder="Type Answer Here" />
+          <input id="answerInput" type="text" name="answer" placeholder="Type Answer Here" />
         </label>
-        <button id="firstAnswer" class="button" type="submit">Check</button>
+        <label class="firstAnswer">
+          <button id="firstAnswer" class="button" type="submit">Check</button>
+        </label>
       </section>
 
-      <section id="securityQuestionTwo" class="securityquest">
+      <!--<section id="securityQuestionTwo" class="securityquest">
         <label name="security">Security Question
           <select name="question" id="question">
             <option value="default" selected>Please select a question:</option>
@@ -57,7 +55,7 @@
           <input id="thirdInput" name="answerThree" type="text" placeholder="Type Answer Here" />
         </label>
         <button id="thirdAnswer" class="button" type="submit">Check</button>
-      </section>
+      </section> -->
 
       <section>
         <button id="passwordResetButton" class="button" type="submit">Password Reset</button>
@@ -65,7 +63,7 @@
 
     </form>
   </main>
-  <footer>&copy; Steve Buscemi</footer>
+  <footer>&copy; Loogle Photos</footer>
   <script src="securityquestions-app.js" type="text/javascript"></script>
 </body>
 
