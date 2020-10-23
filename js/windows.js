@@ -1,8 +1,10 @@
 'use strict';
 
+// URL modifiers
 var adminModeRegExp = /\?admin=true/;
 var uuidParam = 'uuid=';
 var uuidParamBreak = '|';
+// Default user data
 var accountUserName = 'Administrator';
 var accountUserPassword;
 var badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
@@ -10,7 +12,8 @@ var badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
   '1234567', 'abc123', '1q2w3e4r5t', 'q1w2e3r4t5y6', 'iloveyou',
   '123', '000000', '123321', '1q2w3e4r', 'qwertyuiop'];
 
-function passwordRetrieval() {
+// Conditional local storage parsing that generates default user data if null
+function dataRetrieval() {
   if (localStorage.getItem('storedUserName') && localStorage.getItem('storedPassword')) {
     var retrievedUserName = localStorage.getItem('storedUserName');
     var parsedUserName = JSON.parse(retrievedUserName);
@@ -19,17 +22,23 @@ function passwordRetrieval() {
     var parsedPassword = JSON.parse(retrievedPassword);
     accountUserPassword = parsedPassword;
   } else {
-    accountUserPassword = randomBadPassword();
+    accountUserPassword = randomArrayItem(badPasswords);
     dataStorage(accountUserName, accountUserPassword);
   }
 }
 
+// CSS trigger for admin scenario controls
+function adminMode() {
+  if (location.href.search(adminModeRegExp) !== -1) { document.getElementById('controlBox').style.visibility = 'visible'; }
+}
+
+// Transcoding and transportation of admin input user data to address box
 function urlParamInjection(event) {
   event.preventDefault();
   var uuidUserNameInput = event.target.uuidUserName.value;
   if (!uuidUserNameInput) { uuidUserNameInput = accountUserName; }
   var uuidPasswordInput = event.target.uuidPassword.value;
-  if (!uuidPasswordInput) { uuidPasswordInput = randomBadPassword(); }
+  if (!uuidPasswordInput) { uuidPasswordInput = randomArrayItem(badPasswords); }
   uuidUserNameInput = Base64.encode(uuidUserNameInput);
   uuidPasswordInput = Base64.encode(uuidPasswordInput);
   window.location.hash = uuidParam + uuidUserNameInput + uuidParamBreak + uuidPasswordInput;
@@ -37,23 +46,17 @@ function urlParamInjection(event) {
   event.target.uuidPassword.value = null;
 }
 
-function randomBadPassword() {
-  var badPasswordIndex = Math.floor(Math.random() * (badPasswords.length - 1));
-  return badPasswords[badPasswordIndex];
-}
-
-function dataStorage(userName, password) {
-  var convertedUserName = JSON.stringify(userName);
-  localStorage.setItem('storedUserName', convertedUserName);
-  var convertedPassword = JSON.stringify(password);
-  localStorage.setItem('storedPassword', convertedPassword);
+// Selector for random bad password or item from other array
+function randomArrayItem(array) {
+  var arrayIndex = Math.floor(Math.random() * (array.length - 1));
+  return array[arrayIndex];
 }
 
 //3rd-party bas64 transcoding script: http://www.webtoolkit.info/javascript_base64.html#.X49WDNBKhhH
 var Base64 = {
-  // private property
+  // Private property
   _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
-  // public method for encoding
+  // Public method for encoding
   encode: function (input) {
     var output = '';
     var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
@@ -78,7 +81,7 @@ var Base64 = {
     }
     return output;
   },
-  // public method for decoding
+  // Public method for decoding
   decode: function (input) {
     var output = '';
     var chr1, chr2, chr3;
@@ -104,7 +107,7 @@ var Base64 = {
     output = Base64._utf8_decode(output);
     return output;
   },
-  // private method for UTF-8 encoding
+  // Private method for UTF-8 encoding
   _utf8_encode: function (string) {
     string = string.replace(/\r\n/g, '\n');
     var utftext = '';
@@ -125,7 +128,7 @@ var Base64 = {
     }
     return utftext;
   },
-  // private method for UTF-8 decoding
+  // Private method for UTF-8 decoding
   _utf8_decode: function (utftext) {
     var string = '';
     var i = 0;
@@ -154,6 +157,7 @@ var Base64 = {
   }
 };
 
+// Extracts, decodes, and locally stores admin input UUID parameters from URL based on confirmed URL modification (pressing enter)
 function urlAccountDataExtraction() {
   var urlPull = location.href;
   var hashIndex = urlPull.indexOf('#');
@@ -168,6 +172,7 @@ function urlAccountDataExtraction() {
   }
 }
 
+// Overwrites username input field with extracted UUID parameter data
 function loginBoxInjection() {
   var decodedUserName = document.createElement('p');
   decodedUserName.setAttribute('id', 'userNameData');
@@ -177,6 +182,15 @@ function loginBoxInjection() {
   loginForm.replaceChild(decodedUserName, userNameEntry);
 }
 
+// Local storage execution function
+function dataStorage(userName, password) {
+  var convertedUserName = JSON.stringify(userName);
+  localStorage.setItem('storedUserName', convertedUserName);
+  var convertedPassword = JSON.stringify(password);
+  localStorage.setItem('storedPassword', convertedPassword);
+}
+
+// Event handler for password input in login form
 function handleSubmit(event) {
   event.preventDefault();
   var passwordSubmit = event.target.passwordGuess.value;
@@ -192,17 +206,16 @@ function handleSubmit(event) {
   }
 }
 
-function adminMode() {
-  if (location.href.search(adminModeRegExp) !== -1) { document.getElementById('controlBox').style.visibility = 'visible'; }
-}
-
+// Login form event listener
 document.getElementById('userLogin').addEventListener('submit', handleSubmit);
+// Admin scenario controls event listener
 document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection);
+// Page reset trigger with data and parameter clearance
 document.getElementById('resetButton').onclick = function () {
   localStorage.clear('storedPassword');
   location.href = 'windows-login-loginpage.html';
 };
 
 adminMode();
-passwordRetrieval();
+dataRetrieval();
 urlAccountDataExtraction();
