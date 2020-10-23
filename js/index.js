@@ -11,12 +11,3 @@ document.getElementById('buttonMid').onclick = function () {
 document.getElementById('buttonRight').onclick = function () {
   location.href = 'acmerocketco/arcjrmas1/index.html';
 };
-
-
-
-
-
-
-
-
-
