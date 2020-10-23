@@ -127,6 +127,12 @@ fieldset{
     bottom: 80px;
     border: white 2px dashed;
 }
+.classlinks{
+    position: relative;
+    bottom: 70px;
+    left: 100px;
+
+}
 
 h5{
     position: relative;
