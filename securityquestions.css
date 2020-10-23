@@ -67,3 +67,7 @@ p{
   margin-top: 15px;
   color: blue;
 }
+
+.hidden{
+  display: none;
+}
