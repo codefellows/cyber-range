@@ -1,5 +1,6 @@
 'use strict';
 
+var adminModeRegExp = /\?admin=true/;
 var uuidParam = 'uuid=';
 var uuidParamBreak = '|';
 // var loginAttempts = 0;
@@ -15,6 +16,9 @@ function passwordRetrieval() {
     var retrievedPassword = localStorage.getItem('storedPassword');
     var parsedPassword = JSON.parse(retrievedPassword);
     thisIsNotNotThePassword = parsedPassword;
+  } else {
+    thisIsNotNotThePassword = randomBadPassword();
+    passwordStorage(thisIsNotNotThePassword);
   }
 }
 
@@ -30,6 +34,8 @@ function urlParamInjection(event) {
   uuidUserNameInput = Base64.encode(uuidUserNameInput);
   uuidPasswordInput = Base64.encode(uuidPasswordInput);
   window.location.hash = uuidParam + uuidUserNameInput + uuidParamBreak + uuidPasswordInput;
+  event.target.uuidUserName.value = null;
+  event.target.uuidPassword.value = null;
 }
 
 function randomBadPassword() {
@@ -171,6 +177,7 @@ function handleSubmit(event) {
     location.href = 'windows-login-desktop.html';
   } else {
     // else statement to turn input red if password does not match
+    event.target.userName.value = null;
     event.target.passwordGuess.value = null;
   }
 }
@@ -194,11 +201,18 @@ function handleSubmit(event) {
 //   }
 // }
 
+function adminMode() {
+  if (location.href.search(adminModeRegExp) !== -1) {
+    document.getElementById('controlBox').style.visibility = 'visible';
+  }
+}
+
 document.getElementById('userLogin').addEventListener('submit', handleSubmit);
 document.getElementById('uuidParamDataEntry').addEventListener('submit', urlParamInjection);
 
 passwordRetrieval();
 loginUserNameInjection();
+adminMode();
 
 document.getElementById('resetButton').onclick = function () {
   localStorage.clear('storedPassword');
