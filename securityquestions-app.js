@@ -9,7 +9,7 @@ var securityQuestionOneElement = document.getElementById('securityquest-box').ad
 // var attemptsSoFar = 0;
 
 // Grabbing the id "question" and populating it with content from array
-function question(){
+function question() {
   var questionInput = document.getElementById('question');
   questionInput.textContent = questionText[correctAnswerNumber];
 }
@@ -21,9 +21,10 @@ function handleSubmit(event) {
   var userInput = event.target.answer.value;
   if (answerText[correctAnswerNumber] === userInput) {
     correctAnswerNumber++;
+    console.log('when is this getting called');
     correctAttempt(event);
     question();
-  } else if (correctAnswerNumber === 3){
+  } else if (correctAnswerNumber === 3) {
     finalSubmit();
   }
   else {
@@ -35,22 +36,43 @@ function handleSubmit(event) {
 }
 
 // If the input is correct, this is the function that happens
-function correctAttempt(event){
+function correctAttempt(event) {
+
   var correctText = document.createElement('p');
   var parentElementQOne = document.getElementById('answerInput');
-  correctText.textContent ='Correct!';
+  correctText.textContent = 'Correct!';
+  correctText.setAttribute('id', 'correct');
   parentElementQOne.after(correctText);
+  console.log('whats happening');
   event.target.answer.value = null;
+
+  setTimeout(function () {
+
+    var questionCorrect = document.getElementById('correct');
+    questionCorrect.setAttribute('class', 'hidden');
+  }, 2000);
+
+
 }
 
 // If the input is incorrect, this is the function that runs
-function incorrectAttempt(event){
+function incorrectAttempt(event) {
   var incorrectText = document.createElement('p');
   var parentElementQOne = document.getElementById('answerInput');
-  incorrectText.textContent='Incorrect. Remember answers are case sensitive';
+  incorrectText.textContent = 'Incorrect. Remember answers are case sensitive';
+  incorrectText.setAttribute('id', 'incorrect');
   parentElementQOne.after(incorrectText);
   event.target.answer.value = null;
+
+
+  setTimeout(function () {
+
+    var questionIncorrect = document.getElementById('incorrect');
+    questionIncorrect.setAttribute('class', 'hidden');
+  }, 2000);
 }
+
+
 
 // This calls the question function
 question();
@@ -58,9 +80,9 @@ question();
 // This is what happens when all the questions have been answered correctly
 var finalSubmit = document.getElementById('passwordResetButton');
 finalSubmit.addEventListener('click', handleClick);
-function handleClick(event){
+function handleClick(event) {
   event.preventDefault();
-  if (correctAnswerNumber === 3){
+  if (correctAnswerNumber === 3) {
     location.href = 'celebrity-hack-password-reset.html';
     // location.href = 'celebrity-hack-sb-photos.html';
   } else {

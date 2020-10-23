@@ -1,6 +1,6 @@
 'use strict';
 
-var numberOfTries = 3;
+var numberOfTries = 20;
 var numberOfAttempts = 0;
 var correctPassword = 'donny';
 var button = document.getElementById('login-box');
@@ -15,7 +15,7 @@ function handleClick(event) {
 
   console.log(event.target);
   numberOfAttempts++;
-  console.log('event whats happening', attemptedPassword, correctPassword);
+  //console.log('event whats happening', attemptedPassword, correctPassword);
   if (attemptedPassword === correctPassword) {
     correctPasswordEntered();
 
@@ -23,7 +23,7 @@ function handleClick(event) {
     incorrectPassword();
 
   }
-  if (numberOfAttempts === 3) {
+  if (numberOfAttempts === 20) {
 
     location.href = 'securityquestions.html';
 
@@ -34,14 +34,14 @@ function handleClick(event) {
 button.addEventListener('submit', handleClick);
 
 function correctPasswordEntered() {
-  console.log('the correct password was entered');
+  //console.log('the correct password was entered');
 
   location.href = 'celebrity-hack-sb-photos.html';
 }
 
 
 function incorrectPassword() {
-  console.log('is there a incorrect password?');
+  // console.log('is there a incorrect password?');
 
   let modalBtn = document.getElementById('modal-btn');
   let modal = document.querySelector('.modal');
