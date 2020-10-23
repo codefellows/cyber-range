@@ -1,10 +1,7 @@
 
 
-body{background-color: slategrey;
+body{background-color: black;
 margin:auto;}
-
-
-
 main{
     background-color: blanchedalmond;
 }
@@ -96,10 +93,10 @@ h1{
 
   
  .buybutton:hover{
-    background: slategrey;
-    border-radius: 25%; 
+    /* background: slategrey; */
+    /* border-radius: 25%;  */
     margin-right: 92%;
-    transform: scale(5.15);
+    transform: scale(2.15);
 
  } 
 
@@ -112,7 +109,7 @@ h2{
     padding-top: .5%;
     background-color: black;
     color: blanchedalmond;
-    font-family: 'Dosis', sans-serif;;
+    font-family: 'Dosis', sans-serif;
 }
 .heroimage{
     width: 400px;
@@ -125,4 +122,22 @@ h2{
     padding: 1%;
     margin: 1%;
     border-radius: 10px;
+}
+#confidnetialflag{
+    position: fixed;
+    opacity: 60%;
+    z-index: 2;
+    color: red;
+    font-size: 10em;
+}
+#updateDetails{color: blanchedalmond;
+    background-color:slategray;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+
+
+}
+#updateDetails:hover{
+    transform: scale(1.15);
 }
