@@ -2,8 +2,8 @@
 
 // Global variables
 var correctAnswerNumber = 0;
-var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I drive for work?', 'Thank you. Proceed to password reset.'];
-var answerText = ['Brooklyn', 'Wilson', 'Ice Cream Truck'];
+var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I used to drive for work?', 'Thank you. Proceed to password reset.'];
+var answerText = ['brooklyn', 'wilson', 'ice cream truck'];
 var securityQuestionOneElement = document.getElementById('securityquest-box').addEventListener('submit', handleSubmit);
 // var attemptLimit = 3;
 // var attemptsSoFar = 0;
