@@ -17,11 +17,9 @@ function question() {
 // handle function that either provides a correct or incorrect response submitted by the user.
 function handleSubmit(event) {
   event.preventDefault();
-  console.log(event.target);
   var userInput = event.target.answer.value;
   if (answerText[correctAnswerNumber] === userInput) {
     correctAnswerNumber++;
-    console.log('when is this getting called');
     correctAttempt(event);
     question();
   } else if (correctAnswerNumber === 3) {
@@ -43,7 +41,6 @@ function correctAttempt(event) {
   correctText.textContent = 'Correct!';
   correctText.setAttribute('id', 'correct');
   parentElementQOne.after(correctText);
-  console.log('whats happening');
   event.target.answer.value = null;
 
   setTimeout(function () {
