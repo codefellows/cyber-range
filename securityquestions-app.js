@@ -2,8 +2,8 @@
 
 // Global variables
 var correctAnswerNumber = 0;
-var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I drive for work?', 'Thank you. Proceed to password reset.'];
-var answerText = ['Brooklyn', 'Wilson', 'Ice Cream Truck'];
+var questionText = ['Question One: Where was I born?', 'Question Two: What is my mother\'s maiden name?', 'Question Three: What truck did I used to drive for work?', 'Thank you. Proceed to password reset.'];
+var answerText = ['brooklyn', 'wilson', 'ice cream truck'];
 var securityQuestionOneElement = document.getElementById('securityquest-box').addEventListener('submit', handleSubmit);
 // var attemptLimit = 3;
 // var attemptsSoFar = 0;
@@ -17,11 +17,9 @@ function question() {
 // handle function that either provides a correct or incorrect response submitted by the user.
 function handleSubmit(event) {
   event.preventDefault();
-  console.log(event.target);
   var userInput = event.target.answer.value;
   if (answerText[correctAnswerNumber] === userInput) {
     correctAnswerNumber++;
-    console.log('when is this getting called');
     correctAttempt(event);
     question();
   } else if (correctAnswerNumber === 3) {
@@ -43,7 +41,6 @@ function correctAttempt(event) {
   correctText.textContent = 'Correct!';
   correctText.setAttribute('id', 'correct');
   parentElementQOne.after(correctText);
-  console.log('whats happening');
   event.target.answer.value = null;
 
   setTimeout(function () {

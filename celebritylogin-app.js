@@ -13,9 +13,7 @@ function handleClick(event) {
 
   var attemptedPassword = event.target.passwordone.value;
 
-  console.log(event.target);
   numberOfAttempts++;
-  //console.log('event whats happening', attemptedPassword, correctPassword);
   if (attemptedPassword === correctPassword) {
     correctPasswordEntered();
 
@@ -34,15 +32,11 @@ function handleClick(event) {
 button.addEventListener('submit', handleClick);
 
 function correctPasswordEntered() {
-  //console.log('the correct password was entered');
-
   location.href = 'celebrity-hack-sb-photos.html';
 }
 
 
 function incorrectPassword() {
-  // console.log('is there a incorrect password?');
-
   let modalBtn = document.getElementById('modal-btn');
   let modal = document.querySelector('.modal');
   let closeBtn = document.querySelector('.close-btn');
