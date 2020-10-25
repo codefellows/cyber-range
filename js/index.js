@@ -5,7 +5,7 @@ document.getElementById('buttonLeft').onclick = function () {
 };
 
 document.getElementById('buttonMid').onclick = function () {
-  location.href = 'photo-albums/celebritylogin-index.html';
+  location.href = 'photo-albums/index.html';
 };
 
 document.getElementById('buttonRight').onclick = function () {
