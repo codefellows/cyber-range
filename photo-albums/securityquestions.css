@@ -3,23 +3,23 @@ body {
   margin: auto;
   background-image: linear-gradient(90deg, rgba(88,134,246,1) 4%, rgba(160,64,246,1) 100%);
 }
-main{
+main {
   height: 550px;
 }
-header{
+header {
   text-align: center;
   font-size: 35px;
   font-family: 'Roboto', sans-serif;
   padding: 30px;
   color: whitesmoke;
 }
-#headerP{
+#headerP {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   color: whitesmoke;
   /* padding-bottom: 70px; */
 }
-#securityquest-box{
+#securityquest-box {
   position: relative;
   margin-bottom: 20px;
   margin-left: auto;
@@ -31,34 +31,36 @@ header{
   /* border: solid black; */
   border-radius: 10px;
 }
-.securityquest{
+.securityquest {
   padding: 20px;
 }
-.answer-one{
+.answer-one {
   margin-top: 15px;
 }
-input{
+input {
   margin-top: 25px;
   
 }
-footer{
+footer {
   text-align: center;
 }
-#answerResponse{
+.answerBox {
   margin-left: 25px;
+  padding-bottom: 25px;
 }
-.firstAnswer{
+.firstAnswer {
   position: absolute;
   float: right;
   right: 220px;
   top: 85px;
+  padding-bottom: 25px
 }
-#passwordResetButton{
+#passwordResetButton {
   margin-left: 25px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-h5{
+h5 {
   font-size: 20px;
 }
 

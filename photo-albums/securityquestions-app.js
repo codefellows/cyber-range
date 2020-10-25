@@ -22,10 +22,10 @@ function handleSubmit(event) {
     correctAnswerNumber++;
     correctAttempt(event);
     question();
-  } else if (correctAnswerNumber === 3) {
-    finalSubmit();
-  }
-  else {
+    if (correctAnswerNumber === 3) {
+      document.getElementById('passwordResetButton').setAttribute('class', '');
+    }
+  } else {
     incorrectAttempt(event);
   }
   var labelElement = document.getElementById('answerResponse');
@@ -56,7 +56,7 @@ function correctAttempt(event) {
 function incorrectAttempt(event) {
   var incorrectText = document.createElement('p');
   var parentElementQOne = document.getElementById('answerInput');
-  incorrectText.textContent = 'Incorrect. Remember answers are case sensitive';
+  incorrectText.textContent = 'Incorrect. Remember answers are case sensitive.';
   incorrectText.setAttribute('id', 'incorrect');
   parentElementQOne.after(incorrectText);
   event.target.answer.value = null;
@@ -86,15 +86,3 @@ function handleClick(event) {
     location.href = 'securityquestions.html';
   }
 }
-
-
-// select security question answer based off quick google searches
-// x amount of tries if ita wrong
-// breaks through if its right to reset password
-//prompt that says incorrect answer
-// once hit 3 correct answers goes to reset
-// add buttons next to each question
-// event listener for button 'click'
-// remove event listener
-// place holder type answer here
-

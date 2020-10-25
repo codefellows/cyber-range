@@ -13,10 +13,9 @@ function handleSubmit(event) {
   var password = event.target.newPassword.value;
   var passwordCheck = event.target.verifyPassword.value;
   if (password === passwordCheck) {
-    var generateStoredData = JSON.stringify(password);
-    localStorage.setItem('accessData', generateStoredData);
+    localStorage.setItem('accessData', password);
     // user redirected to login page
-    location.href = 'celebritylogin-index.html';
+    location.href = 'index.html';
   } else {
     passwordVerificationError(event);
   }
