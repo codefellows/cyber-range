@@ -1,8 +1,16 @@
-# Code Fellows Ops101 Hacker Challenge Development Platform
+# Ops 101 Hacker Challenge Cyber Range
 
-## Contributors
+## Description
 
-Michael Falk, Stacy Burris, Jordan Kidwell, Tina Myers, Alex Angelico
+The Code Fellows Ops 101 workshop is a day of hands-on penetration testing and ethical hacking. To this end, at the 101 level, the goal is to introduce people to the basics of how to hack. Let's create a safe environment for practicing hacking skills--a "cyber range" as it were.
+
+The core of the range is browser-based. The goal is to give people who are at the introductory level exposure to what it feels like to find hacks, and how they can be exploited.
+
+## Acknowledgements, Resources, and References
+
+### Contributors
+
+Michael Falk, Stacy Burris, Jordan Kidwell, Tina Myers, Alex Angelico, Adrian Huebner, Brook Riggio 
 
 ## Special Thanks
 
@@ -10,18 +18,6 @@ Michael Falk, Stacy Burris, Jordan Kidwell, Tina Myers, Alex Angelico
 - Our Ever-Present 201 Instructor: Lena Eivy
 - The Client: Brook Riggio, Code Fellows VP of Education
 - The One and Only: Steve Buscemi
-
-## Description
-
-Code Fellows wants to reinvent the Ops course to be tailored towards penetration testing and ethical hacking. To this end, at the 101 level, they want to introduce people to the basics of how to hack. They want to create a safe environment for practicing hacking skills--a "cyber range" as it were.
-
-The core of the range is browser-based. The goal is to give people who are at the introductory knowledge level exposure to what is going on under the hood of their web browsers, and how it can be exploited.
-
-## Project Management
-
-[Lucky Charms Trello Board](https://trello.com/b/XjT3J1j3/lucky-charms-main-project-board)
-
-## Technical References
 
 ### General Use
 
