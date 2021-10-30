@@ -19,7 +19,7 @@ header {
   color: whitesmoke;
   /* padding-bottom: 70px; */
 }
-#securityquest-box {
+#securityquestion-box {
   position: relative;
   margin-bottom: 20px;
   margin-left: auto;
@@ -31,7 +31,7 @@ header {
   /* border: solid black; */
   border-radius: 10px;
 }
-.securityquest {
+.securityquestion {
   padding: 20px;
 }
 .answer-one {

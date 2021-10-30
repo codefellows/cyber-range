@@ -1,26 +1,24 @@
 'use strict';
 
-// URL modifiers
-var adminModeRegExp = /\?admin=true/;
-var uuidParam = 'uuid=';
-var uuidParamBreak = '|';
-// Default user data
-var accountUserName = 'Administrator';
-var accountUserPassword;
-var badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
+// URL modifier and data constants
+const adminModeRegExp = /\?admin=true/;
+const uuidParam = 'uuid=';
+const uuidParamBreak = '|';
+const badPasswords = ['123456', '123456789', 'password', 'qwerty', '12345678',
   '12345', '123123', '111111', '1234', '1234567890',
   '1234567', 'abc123', '1q2w3e4r5t', 'q1w2e3r4t5y6', 'iloveyou',
   '123', '000000', '123321', '1q2w3e4r', 'qwertyuiop'];
+// Default user data
+let accountUserName = 'Administrator';
+let accountUserPassword;
 
 // Conditional local storage parsing that generates default user data if null
 function dataRetrieval() {
   if (localStorage.getItem('storedUserName') && localStorage.getItem('storedPassword')) {
-    var retrievedUserName = localStorage.getItem('storedUserName');
-    var parsedUserName = JSON.parse(retrievedUserName);
-    accountUserName = parsedUserName;
-    var retrievedPassword = localStorage.getItem('storedPassword');
-    var parsedPassword = JSON.parse(retrievedPassword);
-    accountUserPassword = parsedPassword;
+    let retrievedUserName = localStorage.getItem('storedUserName');
+    accountUserName = JSON.parse(retrievedUserName);
+    let retrievedPassword = localStorage.getItem('storedPassword');
+    accountUserPassword = JSON.parse(retrievedPassword);
   } else {
     accountUserPassword = randomArrayItem(badPasswords);
     dataStorage(accountUserName, accountUserPassword);
@@ -35,9 +33,9 @@ function adminMode() {
 // Transcoding and transportation of admin input user data to address box
 function urlParamInjection(event) {
   event.preventDefault();
-  var uuidUserNameInput = event.target.uuidUserName.value;
+  let uuidUserNameInput = event.target.uuidUserName.value;
   if (!uuidUserNameInput) { uuidUserNameInput = accountUserName; }
-  var uuidPasswordInput = event.target.uuidPassword.value;
+  let uuidPasswordInput = event.target.uuidPassword.value;
   if (!uuidPasswordInput) { uuidPasswordInput = randomArrayItem(badPasswords); }
   uuidUserNameInput = Base64.encode(uuidUserNameInput);
   uuidPasswordInput = Base64.encode(uuidPasswordInput);
@@ -47,20 +45,17 @@ function urlParamInjection(event) {
 }
 
 // Selector for random bad password or item from other array
-function randomArrayItem(array) {
-  var arrayIndex = Math.floor(Math.random() * (array.length - 1));
-  return array[arrayIndex];
-}
+function randomArrayItem(array) { return array[Math.floor(Math.random() * (array.length - 1))]; }
 
 //3rd-party bas64 transcoding script: http://www.webtoolkit.info/javascript_base64.html#.X49WDNBKhhH
-var Base64 = {
+let Base64 = {
   // Private property
   _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
   // Public method for encoding
   encode: function (input) {
-    var output = '';
-    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-    var i = 0;
+    let output = '';
+    let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    let i = 0;
     input = Base64._utf8_encode(input);
     while (i < input.length) {
       chr1 = input.charCodeAt(i++);
@@ -70,11 +65,8 @@ var Base64 = {
       enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
       enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
       enc4 = chr3 & 63;
-      if (isNaN(chr2)) {
-        enc3 = enc4 = 64;
-      } else if (isNaN(chr3)) {
-        enc4 = 64;
-      }
+      if (isNaN(chr2)) { enc3 = enc4 = 64; }
+      else if (isNaN(chr3)) { enc4 = 64; }
       output = output +
         this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
         this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
@@ -83,10 +75,9 @@ var Base64 = {
   },
   // Public method for decoding
   decode: function (input) {
-    var output = '';
-    var chr1, chr2, chr3;
-    var enc1, enc2, enc3, enc4;
-    var i = 0;
+    let output = '';
+    let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    let i = 0;
     input = input.replace(/[^A-Za-z0-9+/=]/g, '');
     while (i < input.length) {
       enc1 = this._keyStr.indexOf(input.charAt(i++));
@@ -97,12 +88,8 @@ var Base64 = {
       chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
       chr3 = ((enc3 & 3) << 6) | enc4;
       output = output + String.fromCharCode(chr1);
-      if (enc3 !== 64) {
-        output = output + String.fromCharCode(chr2);
-      }
-      if (enc4 !== 64) {
-        output = output + String.fromCharCode(chr3);
-      }
+      if (enc3 !== 64) { output = output + String.fromCharCode(chr2); }
+      if (enc4 !== 64) { output = output + String.fromCharCode(chr3); }
     }
     output = Base64._utf8_decode(output);
     return output;
@@ -110,12 +97,10 @@ var Base64 = {
   // Private method for UTF-8 encoding
   _utf8_encode: function (string) {
     string = string.replace(/\r\n/g, '\n');
-    var utftext = '';
-    for (var n = 0; n < string.length; n++) {
-      var c = string.charCodeAt(n);
-      if (c < 128) {
-        utftext += String.fromCharCode(c);
-      }
+    let utftext = '';
+    for (let n = 0; n < string.length; n++) {
+      let c = string.charCodeAt(n);
+      if (c < 128) { utftext += String.fromCharCode(c); }
       else if ((c > 127) && (c < 2048)) {
         utftext += String.fromCharCode((c >> 6) | 192);
         utftext += String.fromCharCode((c & 63) | 128);
@@ -130,11 +115,11 @@ var Base64 = {
   },
   // Private method for UTF-8 decoding
   _utf8_decode: function (utftext) {
-    var string = '';
-    var i = 0;
-    var c = 0;
-    var c2 = 0;
-    var c3 = 0;
+    let string = '';
+    let i = 0;
+    let c = 0;
+    let c2 = 0;
+    let c3 = 0;
     while (i < utftext.length) {
       c = utftext.charCodeAt(i);
       if (c < 128) {
@@ -159,47 +144,45 @@ var Base64 = {
 
 // Extracts, decodes, and locally stores admin input UUID parameters from URL based on confirmed URL modification (pressing enter)
 function urlAccountDataExtraction() {
-  var urlPull = location.href;
-  var hashIndex = urlPull.indexOf('#');
+  let urlPull = location.href;
+  let hashIndex = urlPull.indexOf('#');
   if (hashIndex !== -1) {
-    var paramBreakIndex = urlPull.indexOf(uuidParamBreak);
-    var uuidUserNameParamSlice = urlPull.slice((hashIndex + uuidParam.length + 1), paramBreakIndex);
-    accountUserName = Base64.decode(uuidUserNameParamSlice);
+    let paramBreakIndex = urlPull.indexOf(uuidParamBreak);
+    accountUserName = Base64.decode(urlPull.slice((hashIndex + uuidParam.length + 1), paramBreakIndex));
+    accountUserPassword = Base64.decode(urlPull.slice(-(urlPull.length - paramBreakIndex) + 1));
     loginBoxInjection();
-    var uuidPasswordParamSlice = urlPull.slice(-(urlPull.length - paramBreakIndex) + 1);
-    accountUserPassword = Base64.decode(uuidPasswordParamSlice);
     dataStorage(accountUserName, accountUserPassword);
   }
 }
 
 // Overwrites username input field with extracted UUID parameter data
 function loginBoxInjection() {
-  var decodedUserName = document.createElement('p');
+  let loginForm = document.getElementById('userNameBox');
+  let userNameEntry = document.getElementById('userNameInput');
+  let decodedUserName = document.createElement('p');
   decodedUserName.setAttribute('id', 'userNameData');
   decodedUserName.textContent = accountUserName;
-  var loginForm = document.getElementById('userNameBox');
-  var userNameEntry = document.getElementById('userNameInput');
   loginForm.replaceChild(decodedUserName, userNameEntry);
 }
 
 // Local storage execution function
 function dataStorage(userName, password) {
-  var convertedUserName = JSON.stringify(userName);
+  let convertedUserName = JSON.stringify(userName);
   localStorage.setItem('storedUserName', convertedUserName);
-  var convertedPassword = JSON.stringify(password);
+  let convertedPassword = JSON.stringify(password);
   localStorage.setItem('storedPassword', convertedPassword);
 }
 
 // Event handler for password input in login form
 function handleSubmit(event) {
   event.preventDefault();
-  var passwordSubmit = event.target.passwordGuess.value;
+  let passwordSubmit = event.target.passwordGuess.value;
   if (passwordSubmit === accountUserPassword) { location.href = 'windows-login-desktop.html'; }
   else {
     event.target.passwordGuess.value = null;
-    var incorrectText = document.createElement('p');
+    let incorrectText = document.createElement('p');
     incorrectText.setAttribute('id', 'swing');
-    var passwordBox = document.getElementById('passwordTextBox');
+    let passwordBox = document.getElementById('passwordTextBox');
     if (passwordBox.firstChild) { passwordBox.removeChild(passwordBox.firstChild); }
     incorrectText.textContent = 'Incorrect username or password.';
     passwordBox.appendChild(incorrectText);
