@@ -67,6 +67,7 @@ Michael Falk, Stacy Burris, Jordan Kidwell, Tina Myers, Alex Angelico, Adrian Hu
 ### Secenario 2
 
 #### The Steve Buscemi Gallery
+
 [Steve Buscemi yearbook photo](https://www.reddit.com/r/pics/comments/1di250/a_young_steve_buscemi/)  
 [Steve Buscemi on a prayer candle](https://cdn.shopify.com/s/files/1/1442/8426/products/Steve_Buscemi_Illuminidol_Jesus_Candle_grande.jpg?v=1505252205)  
 [Steve Buscemi with long white hair](https://www.tvinsider.com/wp-content/uploads/2018/12/miracle-workers.jpg)  
