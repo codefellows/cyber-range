@@ -19,22 +19,22 @@ a. F1 - button– event listener - xs
 Problem to solve: create an environment to host intro level hacker challenges. The site would simulate a Windows login page and accept users to guess passwords. If the user guesses incorrectly the site will show the same error windows does. If entered correctly the user will be directed to a page that looks like a windows desktop.
 
 User Stories:
-P0
 
+P0:
 1. As a user I will see an actual Windows RDP login screen – xs - CSS
-2. As a user I will be able to input a password – xs- form input
-3. As an application I will be able to evaluate the password against a correct response –
-a. Feature 1 input – event listener - xs
-b. Feature 2 evaluate – if then statement- xs
-4. As an application I will be able to show an error message if the entered password doesn’t match the correct response - xs else statement
-5. As an application I will be able to move the user to a second screen that looks like a windows desktop.  s - link to new page
+1. As a user I will be able to input a password – xs- form input
+1. As an application I will be able to evaluate the password against a correct response –
+   1. Feature 1 input – event listener - xs
+   1. Feature 2 evaluate – if then statement- xs
+1. As an application I will be able to show an error message if the entered password doesn’t match the correct response - xs else statement
+1. As an application I will be able to move the user to a second screen that looks like a windows desktop.  s - link to new page
 
-P1
-6. As a user I can click on the files on the desk top to open some fun things like a bio page for us.
-a. F1 – make files - xs - css
-b. F2 – open files - xs – link with a picture
-7. Limit number of input attempts xs – m -counter loop the if then statement
-8. As a user I will see an example of what a brute force attack will look like on the page - m
+P1:
+1. As a user I can click on the files on the desk top to open some fun things like a bio page for us.
+   1. F1 – make files - xs - css
+   1. F2 – open files - xs – link with a picture
+1. Limit number of input attempts xs – m - counter loop the if then statement
+1. As a user I will see an example of what a brute force attack will look like on the page - m
 
 ### Celebrity Hack
 
@@ -43,12 +43,12 @@ Problem to solve: create an environment where a user can simulate hacking a cele
 User Stories:
 
 1. As a user I will see a login to a google photos website for Steve Buscemi – xs css
-2. As a user I will be able to click on a forgot password link and be directed to a security questions page – xs link
-3. As a user I will be able to guess security questions based on Steve Buscemi’s life –
-a. F1 - xs form
-b. F2 – evaluate against a list of correct answers –x3  xs - an if then statement.
-4. As a user if I guess correctly, I will be able to reset the password – s – local storage
-5. As an application I will show the user the Steve Buscemi’s private google photo account page – css
+1. As a user I will be able to click on a forgot password link and be directed to a security questions page – xs link
+1. As a user I will be able to guess security questions based on Steve Buscemi’s life –
+   1. F1 - xs form
+   1. F2 – evaluate against a list of correct answers –x3  xs - an if then statement.
+1. As a user if I guess correctly, I will be able to reset the password – s – local storage
+1. As an application I will show the user the Steve Buscemi’s private google photo account page – css
 
 ### Corporate Espionage
 
