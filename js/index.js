@@ -5,9 +5,9 @@ document.getElementById('buttonLeft').onclick = function () {
 };
 
 document.getElementById('buttonMid').onclick = function () {
-  location.href = 'photo-albums/index.html';
+  location.href = 'pixon/index.html';
 };
 
 document.getElementById('buttonRight').onclick = function () {
-  location.href = 'acmerocketco/arcjrmas1/index.html';
+  location.href = 'acmerocketco/arcjrmas3/index.html';
 };
