@@ -1,9 +1,10 @@
-body{
-  width: 1000px;
+body {
+  max-width: 1000px;
   margin: auto;
   background-color: teal;
 }
-header{
+
+header {
   font-family: 'Permanent Marker', cursive;
   text-align: left;
   font-size: 40px;
@@ -11,53 +12,43 @@ header{
   margin-bottom: 30px;
   margin-top: 20px;
 }
-img{
-  height: 340px;
+
+img {
+  height: 300px;
   width: 300px;
   padding: 10px;
   border-radius: 20px;
   border: 3px groove rgb(204, 204, 53);
+  object-fit: cover;
 }
-.public-facing{
+
+.public-facing {
   margin-bottom: 50px;
 }
-h2{
+
+h2 {
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
   margin-bottom: 20px;
   color: rgb(204, 204, 53);
+}
 
-}
-.first3{
+.first3,
+.second3,
+.third3,
+.fourth3 {
   display: flex;
   flex-direction: row;
 }
-.firstpic{
-  flex-direction: column;
 
-}
-.second3{
-  display:flex;
-  flex-direction: row;
-}
-.secondpic{
+.firstpic,
+.secondpic,
+.thirdpic,
+.fourthpic {
   flex-direction: column;
 }
-.third3{
-  display: flex;
-  flex-direction: row;
-}
-.thirdpic{
-  flex-direction: column;
-}
-.fourth3{
-  display: flex;
-  flex-direction: row;
-}
-.fourthpic{
-  flex-direction: column;
-}
-button{
+
+button {
   border-color: transparent;
   background-color: rgb(204, 204, 53);
   height: 30px;
@@ -65,19 +56,21 @@ button{
   margin-bottom: 20px;
   border-radius: 3px;
   font-family: 'Permanent Marker', cursive;
-  
 }
+
 button:hover {
-  background-color: rgb(248, 248, 171)
+  background-color: rgb(248, 248, 171);
 }
-a:link{
+
+a:link {
   text-decoration: none;
 }
-#link{
+
+#link {
   color: black;
 }
 
-footer{
+footer {
   text-align: center;
   padding: 30px;
   font-family: 'Permanent Marker', cursive;
